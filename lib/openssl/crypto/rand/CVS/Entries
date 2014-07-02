@@ -1,0 +1,15 @@
+/Makefile/1.1/Tue Mar 14 16:57:33 2006//
+/md_rand.c/1.1/Tue Mar 14 16:57:33 2006//
+/rand.h/1.1/Tue Mar 14 16:57:33 2006//
+/rand_egd.c/1.1/Tue Mar 14 16:57:33 2006//
+/rand_err.c/1.1/Tue Mar 14 16:57:33 2006//
+/rand_lcl.h/1.1/Tue Mar 14 16:57:33 2006//
+/rand_lib.c/1.1/Tue Mar 14 16:57:33 2006//
+/rand_nw.c/1.1/Tue Mar 14 16:57:33 2006//
+/rand_os2.c/1.1/Tue Mar 14 16:57:33 2006//
+/rand_unix.c/1.1/Tue Mar 14 16:57:33 2006//
+/rand_vms.c/1.1/Tue Mar 14 16:57:33 2006//
+/rand_win.c/1.1/Tue Mar 14 16:57:33 2006//
+/randfile.c/1.1/Tue Mar 14 16:57:33 2006//
+/randtest.c/1.1/Tue Mar 14 16:57:33 2006//
+D

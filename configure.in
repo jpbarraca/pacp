@@ -1,0 +1,89 @@
+#********************************************************************
+#PACP - Polynomial assisted Ad-hoc Charging Protocol
+#
+#Author: João Paulo Barraca <jpbarraca@av.it.pt>
+#Copyright (c) João Paulo Barraca
+#
+# This file is part of PACP.
+#
+#    PACP is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    PACP is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with PACP.  If not, see <http://www.gnu.org/licenses/>.
+#
+# ********************************************************************/
+
+AC_INIT(src/common/packet.h)
+
+#AC_PREREQ(2.52)
+
+dnl Check for CPU / vendor / OS
+AC_CANONICAL_HOST
+AC_CANONICAL_TARGET
+
+AM_INIT_AUTOMAKE(pacp, 1.1)
+
+CPPFLAGS="-ansi -Werror -Wall -g -O2 -ffast-math -DNDEBUG"
+CFLAGS="-ansi -Werror -Wall -g -O2 -ffast-math -DNDEBUG"
+
+#AM_DISABLE_STATIC
+
+dnl Checks for programs.
+AC_PROG_CC
+AC_PROG_CXX
+
+dnl Work around libtool bug (fixed in the version 1.5a?)
+#AC_DEFUN([AC_PROVIDE_AC_LIBTOOL_DLOPEN], )
+#AC_LIBTOOL_DLOPEN
+AC_PROG_LIBTOOL
+
+AC_SUBST(HAVE_RPM)
+
+AM_CONFIG_HEADER(config.h)
+
+AC_CHECK_LIB(pthread, pthread_create, [], [
+                echo "Error: pthread library not found."
+                exit -1
+                ])
+AC_CHECK_HEADERS(pthread.h,[],[
+								 echo "Error: glibc-devel package not found."
+								 exit -1
+								])
+
+AC_CHECK_LIB(z, crc32, [], [
+                echo "Error: zlib library not found."
+                exit -1
+                ])
+AC_CHECK_HEADERS(zlib.h,[],[
+								 echo -n "Error: zlib-devel package not found."
+								 exit -1
+								])
+
+AC_CHECK_LIB(mysqlclient,mysql_init, [], [
+                echo "Error: mysqlclient library not found."
+                exit -1
+                ])
+AC_CHECK_HEADERS(mysql/mysql.h,[],[
+								 echo -n "Error: mysqlclient-devel package not found."
+							 #exit -1
+								])
+
+AC_OUTPUT(
+  Makefile
+	src/Makefile
+	src/mn/Makefile
+	src/ar/Makefile
+	src/cm/Makefile
+	src/common/Makefile
+	src/utils/Makefile
+	lib/Makefile
+  examples/Makefile
+	,)
